@@ -7,10 +7,11 @@ import 'package:gas_pod/routes/route_helper.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:get/get.dart';
 import 'package:gas_pod/helper/dependencies.dart' as dep;
-
+import 'package:firebase_core/firebase_core.dart';
 import '../controller/gas_controller.dart';
 
 Future<void> main() async{
+
   WidgetsFlutterBinding.ensureInitialized();
   await dep.init();
   runApp(const MyApp());
@@ -23,18 +24,20 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-   return GetBuilder<dataController>(builder: (_){
-      return GetBuilder<gasController>(builder: (_){
+   return FutureBuilder(
+       future : Firebase.initializeApp(),
+        builder: (context, snapshot){
         return GetMaterialApp(
           debugShowCheckedModeBanner: false,
           title: 'Flutter Demo',
-
+          //theme: ThemeData.dark(),
           //home: SplashScreen(),
           //home: MainPage(),
           initialRoute: RouteHelper.getSplashPage(),
           getPages: RouteHelper.routes,
         );
-      });
-    });
+      },
+   );
+
   }
 }

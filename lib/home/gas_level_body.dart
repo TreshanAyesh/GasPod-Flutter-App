@@ -1,4 +1,5 @@
 import 'package:dots_indicator/dots_indicator.dart';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gas_pod/controller/slider_controller.dart';
@@ -22,6 +23,8 @@ class GasLvlBody extends StatefulWidget {
 
 class _GasLvlBodyState extends State<GasLvlBody> {
   PageController pageController = PageController(viewportFraction: 0.85);
+  //final gaslvl = FirebaseDatabase.instance.ref();
+
   var currPageval = 0.0;
   double scaleFactor = 0.8;
   double height = 180;
@@ -46,8 +49,7 @@ class _GasLvlBodyState extends State<GasLvlBody> {
     return Column(
       children: [
         //Slider section
-        GetBuilder<dataController>(builder: (popular){
-          return popular.isLoaded? Container(
+      Container(
             //color: Colors.redAccent,
             height: Dimensions.pageViewContainer,
             child: GestureDetector(
@@ -56,29 +58,27 @@ class _GasLvlBodyState extends State<GasLvlBody> {
               },
               child: PageView.builder(
                   controller: pageController,
-                  itemCount: popular.gaslvllist.length,
+                  itemCount: 5,
                   itemBuilder: (context, position) {
-                    return _buildPageItem(position,popular.gaslvllist[position]);
+                    return _buildPageItem(position);
                   }),
             ),
 
-          )
-              :CircularProgressIndicator(
-            color: AppColors.mainColor,
-          );
-        }),
+          ),
+
+
         //dots
-        GetBuilder<dataController>(builder: (popular){
-          return DotsIndicator(
-            dotsCount: popular.gaslvllist.length<=0?1:popular.gaslvllist.length,
+
+          DotsIndicator(
+            dotsCount: 5,
             position: currPageval,
             decorator: DotsDecorator(
               size: const Size.square(9.0),
               activeSize: const Size(18.0, 9.0),
               activeShape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0)),
             ),
-          );
-        }),
+          ),
+
 
         //Gas level indicators
         SizedBox(height: Dimensions.height30,),
@@ -124,6 +124,7 @@ class _GasLvlBodyState extends State<GasLvlBody> {
                           child: Row(
                             children: [
                               index == 0?
+
                                 BigText(text: "GAS LEVEL",color: AppColors.textColor2):
                               BigText(text: "GAS LEAKAGE LEVEL",color: AppColors.textColor2),
                             ],
@@ -141,7 +142,7 @@ class _GasLvlBodyState extends State<GasLvlBody> {
                               animationDuration: 1000,
                               radius: Dimensions.graphradius120,
                               lineWidth: Dimensions.graphwidth,
-                              percent: gascontroller.gasDatalist[index].value,
+                              percent: 4,
                               progressColor: Colors.deepPurple,
                               backgroundColor: Colors.deepPurple.shade100,
                               circularStrokeCap: CircularStrokeCap.round,
@@ -166,7 +167,13 @@ class _GasLvlBodyState extends State<GasLvlBody> {
     );
   }
 
-  Widget _buildPageItem(int index, gasdata){
+  List images = [ "assets/image/img3.png",
+                  "assets/image/img2.png",
+                  "assets/image/img1.jpg",
+                  "assets/image/img4.jpg",
+                  "assets/image/img5.jpg"];
+
+  Widget _buildPageItem(int index){
     Matrix4 matrix = new Matrix4.identity();
     if(index == currPageval.floor()){
       var currScale = 1 - (currPageval - index)* (1 - scaleFactor);
@@ -209,9 +216,9 @@ class _GasLvlBodyState extends State<GasLvlBody> {
                 image:DecorationImage(
                     alignment: Alignment.centerRight,
                     fit: BoxFit.cover,
-                    image:NetworkImage(
-                        //AppConstants.BASE_URL+"/uploads/"+ gasdata.img!
-                        "https://thumbs.dreamstime.com/z/gas-cylinder-red-isolated-white-42475117.jpg"
+                    image:AssetImage(
+                          images[index]
+
 
                     )
                 )

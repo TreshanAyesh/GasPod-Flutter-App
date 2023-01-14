@@ -21,7 +21,7 @@ class _SplashScreenState extends State<SplashScreen> with TickerProviderStateMix
   late AnimationController controller;
 
   Future<void> _loadResources() async{
-    await Get.find<dataController>().getGaslvlList();
+    await Get.find<PopularProductController>().getPopularProductList();
     await Get.find<gasController>().getGasDataList();
   }
 

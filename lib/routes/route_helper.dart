@@ -1,6 +1,7 @@
 import 'package:gas_pod/home/AboutApp.dart';
 import 'package:gas_pod/home/home_page.dart';
 import 'package:gas_pod/home/main_page.dart';
+import 'package:gas_pod/home/wrapper.dart';
 import 'package:get/get.dart';
 import 'package:gas_pod/home/UserDetail.dart';
 
@@ -19,7 +20,7 @@ class RouteHelper{
 
   static List<GetPage> routes = [
     GetPage(name: initial, page: (){
-      return HomePage();
+      return Wrapper();
       },
       transition: Transition.fadeIn
     ),

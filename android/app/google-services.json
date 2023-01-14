@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "79877157626",
+    "project_id": "gas-pod",
+    "storage_bucket": "gas-pod.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:79877157626:android:1b57efe358c6ddc8934f43",
+        "android_client_info": {
+          "package_name": "com.edr.gas_pod"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "79877157626-i8qnelug4tqhg4mh56okmkbct2gvnn74.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCC54oYZLx2J4NTj5ZGdBSPoCK9g8mINis"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "79877157626-i8qnelug4tqhg4mh56okmkbct2gvnn74.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

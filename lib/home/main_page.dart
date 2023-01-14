@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:gas_pod/widgets/big_texts.dart';
 import 'package:gas_pod/widgets/small_texts.dart';
@@ -14,6 +15,9 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
+
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
