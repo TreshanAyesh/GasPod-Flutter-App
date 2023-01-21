@@ -12,4 +12,5 @@ class AppConstants{
   static const String TOKEN = "GPtoken";
 
   static const String UPLOAD_URL = "/uploads";
+
 }
